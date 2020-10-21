@@ -1,0 +1,41 @@
+version: '3.2'
+services:
+    php:
+        build:
+            dockerfile: ./.docker/php-fpm/Dockerfile
+            context: ./
+        volumes:
+            - ./application:/opt/app/application
+        container_name: php
+
+    nginx:
+        build:
+            context: ./
+            dockerfile: ./.docker/nginx/Dockerfile
+        ports:
+            - '0.0.0.0:8001:80'
+        depends_on:
+            - php
+        links:
+            - php
+        volumes:
+            - ./application:/opt/app/application
+        container_name: nginx
+
+    redis:
+        build:
+            dockerfile: ./.docker/redis/Dockerfile
+            context: .
+        ports:
+            - "6380:6379"
+        volumes:
+            - ./.docker/redis_data:/var/lib/redis
+        environment:
+            - REDIS_REPLICATION_MODE=master
+        command: redis-server --requirepass hXgEBvhsfJbDB
+        networks:
+            - application_core_network
+
+networks:
+    application_core_network:
+        driver: bridge
