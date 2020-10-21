@@ -25,11 +25,23 @@ class ComposerStaticInita6faffb60575c1ae860da48b38eaa749
         ),
     );
 
+    public static $classMap = array (
+        'App\\App' => __DIR__ . '/../..' . '/app/App.php',
+        'App\\Factory\\AppBootstrap' => __DIR__ . '/../..' . '/app/Factory/AppBootstrap.php',
+        'App\\Rest\\Endpoints\\DummyEndpoint' => __DIR__ . '/../..' . '/app/Rest/Endpoints/DummyEndpoint.php',
+        'App\\Rest\\Endpoints\\SecondDummyEndpoint' => __DIR__ . '/../..' . '/app/Rest/Endpoints/SecondDummyEndpoint.php',
+        'App\\Rest\\Factory\\RestApiEndpointFactory' => __DIR__ . '/../..' . '/app/Rest/Factory/RestApiEndpointFactory.php',
+        'App\\Rest\\Interfaces\\InterfaceRestApiEndpointResponse' => __DIR__ . '/../..' . '/app/Rest/Interfaces/InterfaceRestApiEndpointResponse.php',
+        'App\\Rest\\Request\\RestRequest' => __DIR__ . '/../..' . '/app/Rest/Request/RestRequest.php',
+        'App\\Rest\\RestController' => __DIR__ . '/../..' . '/app/Rest/RestController.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInita6faffb60575c1ae860da48b38eaa749::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInita6faffb60575c1ae860da48b38eaa749::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita6faffb60575c1ae860da48b38eaa749::$classMap;
 
         }, null, ClassLoader::class);
     }

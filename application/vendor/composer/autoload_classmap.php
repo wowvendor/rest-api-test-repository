@@ -6,4 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\App' => $baseDir . '/app/App.php',
+    'App\\Factory\\AppBootstrap' => $baseDir . '/app/Factory/AppBootstrap.php',
+    'App\\Rest\\Endpoints\\DummyEndpoint' => $baseDir . '/app/Rest/Endpoints/DummyEndpoint.php',
+    'App\\Rest\\Endpoints\\SecondDummyEndpoint' => $baseDir . '/app/Rest/Endpoints/SecondDummyEndpoint.php',
+    'App\\Rest\\Factory\\RestApiEndpointFactory' => $baseDir . '/app/Rest/Factory/RestApiEndpointFactory.php',
+    'App\\Rest\\Interfaces\\InterfaceRestApiEndpointResponse' => $baseDir . '/app/Rest/Interfaces/InterfaceRestApiEndpointResponse.php',
+    'App\\Rest\\Request\\RestRequest' => $baseDir . '/app/Rest/Request/RestRequest.php',
+    'App\\Rest\\RestController' => $baseDir . '/app/Rest/RestController.php',
 );
